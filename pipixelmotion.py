@@ -4,7 +4,7 @@
 # https://github.com/claytonn
 # http://claytonn.com
 
-# **Note: This per pixel method is really really inefficient. Seriously.
+# **Note: This per pixel method is really really inefficient. Seriously. 
 
 import io
 import picamera
@@ -24,7 +24,7 @@ while(scan):
 	stream.seek(0)	
 
 	if(len(images)!=2):
-		images.append( Image.open(stream))
+		images.append(Image.open(stream))
 	else:
 		images[0] = Image.open(stream)
 	
@@ -45,20 +45,14 @@ while(scan):
 				
 				pd = abs(val2-val)
 				
-				
 				if(pd > color_offset):
 					diff += 1
 				y += 1
+				
 			#Move Right 1 & Reset Y For Next Loop
 			x+=1
 			y=0
 		
 		changed  = (diff * 100) / (images[0].size[0] * images[0].size[1])
-		
 		print str(changed) + "% changed."
-		
-		#Clean up for next loop
-		x = 0 
-		y = 0
-		diff = 0
 		images[1] = images[0]
